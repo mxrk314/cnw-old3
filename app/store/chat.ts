@@ -250,9 +250,7 @@ export const useChatStore = create<ChatStore>()(
 
         const systemInfo = createMessage({
           role: "system",
-          content: `IMPORTANT: You are a virtual assistant powered by the ${
-            modelConfig.model
-          } model, now time is ${new Date().toLocaleString()}}`,
+          content: `You are ChatGPT, a large language model trained by OpenAI. Carefully heed the user's instructions. Respond using markdown.`,
           id: botMessage.id! + 1,
         });
 
