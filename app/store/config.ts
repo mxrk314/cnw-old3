@@ -22,20 +22,20 @@ export const DEFAULT_CONFIG = {
   fontSize: 14,
   theme: Theme.Auto as Theme,
   tightBorder: false,
-  sendPreviewBubble: true,
+  sendPreviewBubble: false,
   sidebarWidth: 300,
 
-  disablePromptHint: false,
+  disablePromptHint: true,
 
-  dontShowMaskSplashScreen: false, // dont show splash screen when create chat
+  dontShowMaskSplashScreen: true, // dont show splash screen when create chat
 
   modelConfig: {
-    model: "gpt-3.5-turbo" as ModelType,
-    temperature: 0.5,
-    max_tokens: 2000,
+    model: "gpt-3.5-turbo-16k-0613" as ModelType,
+    temperature: 0.8,
+    max_tokens: 16000,
     presence_penalty: 0,
     sendMemory: true,
-    historyMessageCount: 4,
+    historyMessageCount: 20,
     compressMessageLengthThreshold: 1000,
   },
 };
@@ -49,7 +49,7 @@ export type ChatConfigStore = ChatConfig & {
 
 export type ModelConfig = ChatConfig["modelConfig"];
 
-const ENABLE_GPT4 = true;
+const ENABLE_GPT4 = false;
 
 export const ALL_MODELS = [
   {
@@ -57,44 +57,8 @@ export const ALL_MODELS = [
     available: ENABLE_GPT4,
   },
   {
-    name: "gpt-4-0314",
-    available: ENABLE_GPT4,
-  },
-  {
-    name: "gpt-4-32k",
-    available: ENABLE_GPT4,
-  },
-  {
-    name: "gpt-4-32k-0314",
-    available: ENABLE_GPT4,
-  },
-  {
-    name: "gpt-3.5-turbo",
+    name: "gpt-3.5-turbo-16k-0613",
     available: true,
-  },
-  {
-    name: "gpt-3.5-turbo-0301",
-    available: true,
-  },
-  {
-    name: "qwen-v1", // 通义千问
-    available: false,
-  },
-  {
-    name: "ernie", // 文心一言
-    available: false,
-  },
-  {
-    name: "spark", // 讯飞星火
-    available: false,
-  },
-  {
-    name: "llama", // llama
-    available: false,
-  },
-  {
-    name: "chatglm", // chatglm-6b
-    available: false,
   },
 ] as const;
 
