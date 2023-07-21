@@ -77,10 +77,18 @@ export function limitNumber(
   return Math.min(max, Math.max(min, x));
 }
 
-export function limitModel(name: string) {
-  return ALL_MODELS.some((m) => m.name === name && m.available)
-    ? name
-    : ALL_MODELS[4].name;
+export function limitModel(name: string): ModelType {
+  const model = ALL_MODELS.find((m) => m.name === name && m.available);
+  if (model) {
+    return model.name;
+  } else {
+    const defaultModel = ALL_MODELS.find(m => m.available);
+    if (defaultModel) {
+      return defaultModel.name;
+    } else {
+      throw new Error('No available model found');
+    }
+  }
 }
 
 export const ModalConfigValidator = {
